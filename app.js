@@ -1,35 +1,22 @@
 const http = require('http');
 const server = http.createServer((req,res) => {
-    if(req.url === '/home')
+    const url = req.url;
+    if(req.url === '/')
     {
-        res.setHeader('Content-type', 'text/html')
         res.write('<html>');
-        res.write('<head><title>My First Page</title><head>')
-        res.write('<body><h1>Welcome home</h1></body>')
+        res.write('<head><title>Enter message</title><head>')
+        res.write('<body><form action = "/message" method = "POST"><input type="text" name="message"><button type = "submit">Send</button></form></body>')
         res.write('</html>')
-        process.exit();
         return res.end()
-        
     }
 
-    if(req.url === '/about')
-    {
-        res.setHeader('Content-type', 'text/html')
-        res.write('<html>');
-        res.write('<head><title>My First Page</title><head>')
-        res.write('<body><h1>Welcome to About Us page</h1></body>')
-        res.write('</html>')
-        return res.end()
-    }
-    if(req.url === '/node')
-    {
-        res.setHeader('Content-type', 'text/html')
-        res.write('<html>');
-        res.write('<head><title>My First Page</title><head>')
-        res.write('<body><h1>Welcome to my Node js Project</h1></body>')
-        res.write('</html>')
-        return res.end()
-    }
+    res.setHeader('Content-type', 'text/html')
+    res.write('<html>');
+    res.write('<head><title>My First Page</title><head>')
+    ees.write('<body><h1>Welcome to my Node js Project</h1></body>')
+    res.write('</html>')
+    return res.end()
     
+
 })
-server.listen(5000)
+server.listen(3000)
