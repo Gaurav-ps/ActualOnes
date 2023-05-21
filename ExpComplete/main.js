@@ -5,10 +5,25 @@ async function onsignup(event){
             Name: event.target.username.value,
             Email: event.target.useremail.value,
             Password: event.target.password.value
-        } 
-        let postResponse = axios.post('http://localhost:4000/users/signup',obj)
-        let val = await postResponse;
-        console.log(val.data.userDetails)
+        }
+        let getResponse = axios.get('http://localhost:4000/users/')
+        let getValues = await getResponse
+        let flag = true;
+        for(let i=0; i<getValues.data.existingUsers.length; i++){
+            
+            if(getValues.data.existingUsers[i].name == obj.Name && getValues.data.existingUsers[i].email == obj.Email)
+            {
+                flag = false;
+                alert('User Already Exists')
+                break;
+            } 
+        }
+        if(flag){
+            let postResponse = axios.post('http://localhost:4000/users/signup',obj)
+            let val = await postResponse;
+            console.log(val.data.userDetails)
+        }    
+        
         //showOnScreen(val.data.orderDetails);
     }
     catch(err){

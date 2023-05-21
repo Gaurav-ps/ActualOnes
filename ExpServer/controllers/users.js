@@ -17,6 +17,17 @@ const addUsers = async(req,res,next) => {
     }
 }
 
+const getUsers = async(req,res,next) => {
+    try{
+        const allUsers = await Users.findAll()
+        res.status(200).json({existingUsers: allUsers})
+    }
+    catch(err){
+        console.log(err)
+    }
+}
+
 module.exports = {
     addUsers,
+    getUsers
 }
