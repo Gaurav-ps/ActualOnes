@@ -5,7 +5,8 @@ const addExpense = async(req,res,next) => {
     try{
         const expenses = req.body.Expenses
         const description = req.body.Description
-        const data = await Expenses.create({amount: expenses, description: description})
+        const category = req.body.Category
+        const data = await Expenses.create({amount: expenses, description: description, category: category})
         res.status(201).json({expenseDetails: data})
     }
     catch(err){
